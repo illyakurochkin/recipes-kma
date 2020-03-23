@@ -34,11 +34,19 @@ const RecipesList = () => {
   const [category, setCategory] = useState(null);
   const [name, setName] = useState('');
 
-  useEffect(() => { api.fetchAllRecipes().then(receiveRecipes); }, []);
+  useEffect(() => {
+    setCategory(localStorage.getItem('category'));
+    api.fetchAllRecipes().then(receiveRecipes);
+  }, []);
 
   if (!recipes) {
     return <Loader active inline/>;
   }
+
+  const onCatecoryChange = (e, {value}) => {
+    window.localStorage.setItem('category', value);
+    setCategory(value);
+  };
 
   const renderedRecipes = recipes.sort(sorters[sortBy])
     .filter(recipe => recipe.name.toLowerCase().startsWith(name.toLowerCase()))
@@ -52,7 +60,7 @@ const RecipesList = () => {
         <Dropdown
           options={getCategoriesOptions(recipes)}
           placeholder="category" value={category}
-          onChange={(e, {value}) => setCategory(value)}
+          onChange={onCatecoryChange}
         />
         <Input value={name} placeholder="Search by name" onChange={(e) => setName(e.target.value)}/>
       </FiltersContainer>
