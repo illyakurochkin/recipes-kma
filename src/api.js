@@ -20,7 +20,12 @@ function updateRecipe(recipe) {
   return api.put(`/recipes/${recipe.id}`, recipe);
 }
 
+function createRecipe(recipe) {
+  return api.post('/recipes', recipe);
+}
+
 export default {
+  createRecipe,
   updateRecipe,
   fetchRecipe,
   fetchAllRecipes,

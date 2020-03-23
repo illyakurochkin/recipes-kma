@@ -27,7 +27,8 @@ function Recipe() {
         <Button primary onClick={onEdit}>Edit</Button>
         <Button color="red" onClick={onDelete}>Delete</Button>
       </div>
-      <Header as="h3">Description: {recipe.shortDesc}</Header>
+      <Header as="h3">Short description: {recipe.shortDesc}</Header>
+      <p>{recipe.longDesc}</p>
       <Header as="h3">Date created: {recipe.createDate}</Header>
       <Image src='../image.png' fluid />
     </div>

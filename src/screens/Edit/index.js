@@ -28,17 +28,21 @@ function Edit() {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Field>
           <label>Name</label>
-          <input name="name" defaultValue={recipe.name} placeholder='Name' ref={register}/>
+          <input name="name" defaultValue={recipe.name} ref={register}/>
+        </Form.Field>
+        <Form.Field>
+          <label>Category</label>
+          <input name="category" defaultValue={recipe.category} ref={register}/>
         </Form.Field>
         <Form.Field>
           <label>Description</label>
-          <input name="shortDesc" defaultValue={recipe.shortDesc} placeholder='Description' ref={register}/>
+          <input name="shortDesc" defaultValue={recipe.shortDesc} ref={register}/>
         </Form.Field>
         <Form.Field>
           <label>Description</label>
-          <input name="category" defaultValue={recipe.category} placeholder='Category' ref={register}/>
+          <textarea name="longDesc" defaultValue={recipe.longDesc} ref={register}/>
         </Form.Field>
-        <Button type='submit'>Submit</Button>
+        <Button primary type='submit'>Submit</Button>
       </Form>
     </div>
   );
