@@ -1,40 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {Link, Router, Switch} from 'react-router-dom';
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
+import Recipes from './screens/Recipes';
+import styled from 'styled-components';
+import Recipe from './screens/Recipe';
+import Edit from './screens/Edit';
+
+const Container = styled.div`
+  width: 920px;
+  padding: 20px;
+  margin: 40px auto;
+  border: 1px dashed gray;
+`;
 
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+      <Container>
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/recipes/:id"><Recipe /></Route>
+          <Route path="/recipes"><Recipes /></Route>
+          <Route path="/edit/:id"><Edit /></Route>
         </Switch>
-      </div>
+      </Container>
     </Router>
   );
 }
